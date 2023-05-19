@@ -22,8 +22,10 @@ fi
 if [ -f "$NVM_DIR/nvm.sh" ]; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
   [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  nvm use
 fi
 
+NVMNODE=`nvm which node 2> /dev/null`
 NODE=`which node 2> /dev/null`
 NODEJS=`which nodejs 2> /dev/null`
 IOJS=`which iojs 2> /dev/null`
@@ -33,7 +35,9 @@ BINARY=
 #
 # Figure out which binary we need to use for our script execution.
 #
-if [[ -n "$NODE" ]]; then
+if [[ -n "$NVMNODE" ]]; then
+  BINARY="$NVMNODE"
+elif [[ -n "$NODE" ]]; then
   BINARY="$NODE"
 elif [[ -n "$NODEJS" ]]; then
   BINARY="$NODEJS"
