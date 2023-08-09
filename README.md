@@ -20,8 +20,10 @@ It's advised to install the **pre-commit** module as a `devDependencies` in your
 `package.json` as you only need this for development purposes. To install the
 module simply run:
 
-```
-npm install --save-dev pre-commit
+```bash
+npm install --save-dev github:bbc/pre-commit
+# or
+npm install --save-dev https://github.com/bbc/pre-commit
 ```
 
 To install it as `devDependency`. When this module is installed it will override
